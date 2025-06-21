@@ -63,6 +63,8 @@
 
 ---
 
+# Projects
+
 ## 🧱 Beginner Projects
 
 *Goal: Get comfortable with syntax, flow control, functions, memory basics*
