@@ -1,6 +1,5 @@
 #include <stdio.h>
-// #include <math.h> // Not used
-// #include <stdlib.h> // Not used
+
 
 float sum(float x, float y){
     return x + y;
@@ -14,10 +13,9 @@ float multiply(float x, float y){
 float divide(float x, float y){
     return  x / y;
 }
-// divide_by_zero_error is not used, can be removed.
 
 int main() {
-    printf("Welcome to my Calculator\n"); // Added newline for better formatting
+    printf("Welcome to my Calculator\n"); 
     float y;
     float x;
     char func;
@@ -26,8 +24,6 @@ int main() {
     printf("Enter first number: ");
     scanf("%f", &x);
 
-    // Consume the leftover newline character after reading 'x'
-    // while (getchar() != '\n' && getchar() != EOF); // More robust way to clear input buffer
 
     while (1){
         printf("\n Enter second number: ");
