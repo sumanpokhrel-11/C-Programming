@@ -31,6 +31,8 @@ void add_student(FILE *fp) {
     scanf("%d %s %f", &s.roll, s.name, &s.marks);
     fwrite(&s, sizeof(s), 1, fp);
     printf("Student added.\n");
+    // Flush the output buffer immediately after writing
+    fflush(fp);
 }
 
 void list_students(FILE *fp) {
@@ -39,6 +41,35 @@ void list_students(FILE *fp) {
     printf("List of Students:\n");
     while (fread(&s, sizeof(s), 1, fp))
         printf("Roll: %d\t, Name: %s\t, Marks: %.2f\n", s.roll, s.name, s.marks);
+}
+
+void search_student(void) {
+    struct Student s;
+    FILE *fp = fopen(FILENAME, "rb");
+    char name_to_search[MAX_NAME_LENGTH];
+    int found = 0;// set flag to zero
+
+    if (fp ==NULL) {
+        perror("Error opening file");
+        return;
+    }
+    printf("Enter the name to search: ");
+    scanf("%s", name_to_search);
+
+    while(fread(&s, sizeof(struct Student), 1, fp)==1) {
+
+            if ( strcmp(s.name, name_to_search)==0) {
+            printf("Name: %s\t Rollno: %d\t Marks: %f", s.name, s.roll, s.marks);
+            found = 1;
+            break;
+        }
+    }
+    if (!found) {
+        printf("Student %s record not available.\n", name_to_search);
+    }
+    fclose(fp);
+
+
 }
 
 void delete_students(void) {
@@ -58,8 +89,7 @@ void delete_students(void) {
     printf("\n------------Delete Student from record-------------\n");
     printf("Enter the name of the student to delete: ");
     // clear_input_buffer(); // <-- REMOVE THIS LINE HERE. It's causing the extra Enter wait.
-    scanf("%s", name_to_delete); // This will correctly read the name after the prompt
-
+    scanf("%s", name_to_delete); 
     // 2. Open original and temporary files for the deletion process
     FILE *original_fp, *temp_fp;
 
@@ -113,11 +143,14 @@ int main() {
     FILE *fp = fopen("students.txt", "ab+");
     int choice;
     do {
-        printf("\n1. Add Student\n2. List Students\n3. Delete Student Record\n0. Exit\nChoice: ");
+        printf("\n1. Add Student\n2. List Students\n3. Delete Student Record\n4. Search Student Record \n0. Exit\nChoice: ");
         scanf("%d", &choice);
         clear_input_buffer();
+
         if (choice == 1) add_student(fp);
+
         else if (choice == 2) list_students(fp);
+
         else if (choice ==3) {
             delete_students(); // Call delete_students without arguments
 
@@ -130,6 +163,8 @@ int main() {
                 return EXIT_FAILURE; // Exit if file cannot be reopened
             }
         }
+
+        else if (choice ==4) search_student();
 
     } while (choice != 0);
     fclose(fp);
