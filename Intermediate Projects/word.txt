@@ -1,0 +1,3 @@
+Word Counter
+Read a txt file and count words, lines, and characters  
+Practice string handling and file reading
