@@ -1,5 +1,13 @@
 // Write a program that asks the user for the number of integers they want to store.
 
+// Dynamically allocate an array of that size using malloc.
+
+// Read the integers from the user and store them in the dynamically allocated array.
+
+// Print the elements of the array.
+
+// Before exiting, free the allocated memory.
+
 #include <stdio.h>
 #include <stdlib.h>
 
