@@ -61,6 +61,8 @@
 - Explains memory, pointers, stack vs heap.
 - Excellent for procedural to object-oriented transitions.
 
+## 6. Makefile
+- **[Makefile](https://makefiletutorial.com/)**
 ---
 
 ## 🔍 Suggested Progression

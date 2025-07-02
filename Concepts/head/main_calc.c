@@ -8,6 +8,19 @@
 
 // Compile these files using gcc and demonstrate the full compilation flow.
 
+
+// Using the calculator.h, calculator.c, and main_calc.c files, create a Makefile that:
+
+// Compiles calculator.c into calculator.o.
+
+// Compiles main_calc.c into main_calc.o (making sure to include the calculator.h dependency).
+
+// Links calculator.o and main_calc.o to create an executable named calc_app.
+
+// Includes a clean target to remove .o files and calc_app.
+
+// Test your Makefile by running make and make clean.
+
 #include <stdio.h>
 #include "calculator.h"
 
